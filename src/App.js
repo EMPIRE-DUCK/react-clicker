@@ -10,20 +10,47 @@ var Route = ReactRouter.Route;
 var Switch = ReactRouter.Switch;
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state={
+      value: "",
+      username: ""
+    }
+  this.handleChange = this.handleChange.bind(this);    
+  this.handleSubmit = this.handleSubmit.bind(this);    
+  }
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+  handleSubmit(event) {
+    this.setState({username: this.state.value })
+    event.preventDefault();
+  }  
+
   render() {
     return (
-      <Router>
+      <Router>         
         <div className="App">
           <Nav name={"React Clicker"}/>
-          <Switch>
-            <Route exact path="/" component={Clicker}/>
-            <Route exact path="/about" component={About}/>
-            <Route render={function(){
-                return <p>Not found</p>
-            }}/>          
-          </Switch>
+          <div className="ui container">
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Your name:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+              <input type="submit" onSubmit={this.handleSubmit} />
+            </form>
+          </div>   
+            <Switch>
+
+              <Route exact path="/" render={(props) => ( <Clicker user={this.state.username}/> )}/>
+              <Route exact path="/about" component={About}/>
+              <Route render={function(){
+                  return <p>Not found</p>
+              }}/>          
+            </Switch>
         </div>
-      </Router>
+      </Router>        
     );
   }
 }
