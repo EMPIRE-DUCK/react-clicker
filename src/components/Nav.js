@@ -1,5 +1,7 @@
 import React from 'react';
 import logo from '../img/logo.svg';
+var ReactRouter = require('react-router-dom');
+var NavLink = ReactRouter.NavLink;
 
 class Nav extends React.Component{
 	render(){
@@ -8,9 +10,9 @@ class Nav extends React.Component{
         <div className="item">
           <img className="ui navbar-logo" src={logo}/>
         </div>
-        <a className="item">{this.props.name}</a>
-        <a className="item">Options</a>
-        <a className="item">About</a>
+        <NavLink className="item" exact to="/">{this.props.name}</NavLink>
+{/*        <NavLink className="item" to="/options">Options</NavLink>
+*/}        <NavLink className="item" to="/about">About</NavLink>
       </nav>
 		)
 	}
