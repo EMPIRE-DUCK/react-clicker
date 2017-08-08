@@ -8,7 +8,7 @@ class Nav extends React.Component{
         <div className="item">
           <img className="ui navbar-logo" src={logo}/>
         </div>
-        <a className="item">Clicker</a>
+        <a className="item">{this.props.name}</a>
         <a className="item">Options</a>
         <a className="item">About</a>
       </nav>
