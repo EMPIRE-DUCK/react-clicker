@@ -1,11 +1,20 @@
 import React from 'react';
 import logo from '../img/logo.svg';
 class ClickerMain extends React.Component{
+  constructor(props){
+    super();
+  this.clickHandler = this.clickHandler.bind(this);
+  }
+  clickHandler(){
+    this.props.passScoreChange(1);
+  }
+
 	render(){
 		return(
       <div className="main-clicker-container">
-        <h4>Helloo I am the clicker</h4>
-        <img className="main-clicker-image" src={logo}/>
+        <div>
+        <img className="main-clicker-image" src={logo} onClick={this.clickHandler}/>
+        </div>
       </div>
 		)
 	}

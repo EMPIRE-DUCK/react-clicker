@@ -12,7 +12,7 @@ class ClickerPage extends React.Component{
     this.handleScoreChange = this.handleScoreChange.bind(this);    
   }
   handleScoreChange(num){
-    const updatedScore = this.score + num
+    const updatedScore = this.state.score + num;
     this.setState({
       score: updatedScore
     })
@@ -20,11 +20,10 @@ class ClickerPage extends React.Component{
 	render(){
 		return(
       <div className="ui raised very padded text container segment">
-        <h2 className="ui header">Clicker</h2>
         <WelcomeMessage name={this.props.username}/>
-          <ClickerMain/>
-          <ClickerScoreDisplay score={this.state.score}/>
-        </div>
+        <ClickerMain passScoreChange={this.handleScoreChange}/>
+        <ClickerScoreDisplay score={this.state.score}/>
+      </div>
 		)
 	}
 }

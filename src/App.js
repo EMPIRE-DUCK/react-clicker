@@ -5,6 +5,8 @@ import Nav from './components/Nav';
 import About from './components/About';
 import ClickerPage from './components/ClickerPage';
 import Options from './components/Options';
+import Achievements from './components/Achievements';
+
 var ReactRouter = require('react-router-dom');
 var Router = ReactRouter.BrowserRouter;
 var Route = ReactRouter.Route;
@@ -34,6 +36,7 @@ class App extends Component {
               <Route exact path="/" render={(props) => ( <ClickerPage username={this.state.username}/> )}/>
               <Route exact path="/about" component={About}/>
               <Route exact path="/options" render={(props) => ( <Options onUsernameInput={this.handleUsernameInput} username={this.state.username}/> )}/>              
+              <Route exact path="/achievements" component={Achievements}/>
               <Route render={function(){
                   return <p>Not found</p>
               }}/>          

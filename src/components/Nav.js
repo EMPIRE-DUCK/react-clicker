@@ -13,6 +13,7 @@ class Nav extends React.Component{
         <NavLink className="item" exact to="/">{this.props.name}</NavLink>
         <NavLink className="item" to="/options">Options</NavLink>
         <NavLink className="item" to="/about">About</NavLink>
+        <NavLink className="item" to="/achievements">Achievements</NavLink>        
       </nav>
 		)
 	}
