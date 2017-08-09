@@ -11,8 +11,8 @@ class Nav extends React.Component{
           <img className="ui navbar-logo" src={logo}/>
         </div>
         <NavLink className="item" exact to="/">{this.props.name}</NavLink>
-{/*        <NavLink className="item" to="/options">Options</NavLink>
-*/}        <NavLink className="item" to="/about">About</NavLink>
+        <NavLink className="item" to="/options">Options</NavLink>
+        <NavLink className="item" to="/about">About</NavLink>
       </nav>
 		)
 	}
