@@ -4,13 +4,12 @@ class SetName extends React.Component{
 	render(){
 		return(
           <div className="ui container">
-            <form onSubmit={this.handleSubmit}>
-              <label>
-                Your name:
-                <input type="text"/>
-              </label>
-              <input type="submit"/>
-            </form>
+          <form>
+          	<label>
+          	Your name: 
+            <input type="text" onChange={this.props.onUsernameInput} defaultValue={this.props.username}/>
+            </label>
+          </form>              
           </div>   
 		)
 	}

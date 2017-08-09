@@ -5,7 +5,7 @@ class About extends React.Component{
 		return(
       <div className="ui raised very padded text container segment">
         <h2 className="ui header">About</h2>
-        <p>React clicker, made by Tomasz Galina as a fun way to practice all things React.js</p>
+        <p>React Clicker, made by Tomasz Galina as a fun way to practice all things React.js</p>
         <p>Expect more features in the future!</p>
       </div>
 		)

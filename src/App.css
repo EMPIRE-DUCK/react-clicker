@@ -12,6 +12,11 @@
   height: 50px;
   width: auto;
 }
+.main-clicker-image{
+  border: 2px solid lightblue;
+  width: 80%;
+
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
