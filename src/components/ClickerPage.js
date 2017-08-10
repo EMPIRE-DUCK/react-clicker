@@ -2,7 +2,8 @@ import React from 'react';
 import WelcomeMessage from './WelcomeMessage';
 import ClickerMain from './ClickerMain';
 import ClickerScoreDisplay from './ClickerScoreDisplay';
-
+import ClickerUpgrades from './ClickerUpgrades';
+import ClickerBuildings from './ClickerBuildings';
 class ClickerPage extends React.Component{
   constructor(props){
     super(props);
@@ -19,10 +20,16 @@ class ClickerPage extends React.Component{
   }
 	render(){
 		return(
-      <div className="ui raised very padded text container segment">
-        <WelcomeMessage name={this.props.username}/>
-        <ClickerMain passScoreChange={this.handleScoreChange}/>
-        <ClickerScoreDisplay score={this.state.score}/>
+      <div className="ui stackable grid">
+        <ClickerUpgrades/>
+        <div className="eight wide stretched column">
+          <div className="ui raised segment">
+            <WelcomeMessage name={this.props.username}/>
+            <ClickerMain passScoreChange={this.handleScoreChange}/>
+            <ClickerScoreDisplay score={this.state.score}/>
+          </div>
+        </div>
+        <ClickerBuildings/>        
       </div>
 		)
 	}
