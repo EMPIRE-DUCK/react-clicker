@@ -16,9 +16,11 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      username: "Clicking Master"
+      username: "Clicking Master",
+      score: 0
     }
     this.handleUsernameInput = this.handleUsernameInput.bind(this);
+    this.handleScoreChange = this.handleScoreChange.bind(this);    
   }
 
   handleUsernameInput(username){
@@ -27,13 +29,20 @@ class App extends Component {
     });
   }
 
+  handleScoreChange(num){
+    const updatedScore = this.state.score + num;
+    this.setState({
+      score: updatedScore
+    })
+  }
+
   render() {
     return (
       <Router>         
         <div className="App">
           <Nav name={"React Clicker"}/>
             <Switch>
-              <Route exact path="/" render={(props) => ( <ClickerPage username={this.state.username}/> )}/>
+              <Route exact path="/" render={(props) => ( <ClickerPage username={this.state.username} passScoreChange={this.handleScoreChange} score={this.state.score}/> )}/>
               <Route exact path="/about" component={About}/>
               <Route exact path="/options" render={(props) => ( <Options onUsernameInput={this.handleUsernameInput} username={this.state.username}/> )}/>              
               <Route exact path="/achievements" component={Achievements}/>
