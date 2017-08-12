@@ -9,7 +9,7 @@ class ClickerPage extends React.Component{
 	render(){
 		return(
       <div className="ui stackable grid">
-        <ClickerUpgrades/>
+        <ClickerUpgrades  upgrades={this.props.upgrades} handleUpgradePurchase={this.props.handleUpgradePurchase}/>
         <div className="eight wide stretched column">
           <div className="ui raised segment">
             <WelcomeMessage name={this.props.username}/>
