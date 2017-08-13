@@ -82,36 +82,32 @@ class App extends Component {
     const updatedScore = this.state.score + num*this.state.clickModifier;
     this.setState({
       score: updatedScore
-    })
+    });
   }
+
   handleUpgradePurchase(id){
     let tempUpgrades = this.state.upgrades;
-    console.log(this.state.score, "statescore");
-    console.log(tempUpgrades.price, "tempupgrprice");
     if(this.state.score >= tempUpgrades[id].price){
-      console.log("bought!!");
       const updatedScore = this.state.score - tempUpgrades[id].price;
       tempUpgrades[id].active = true;
       this.setState({
         upgrades: tempUpgrades,
         score: updatedScore
-      })
-      this.calculateClickModifier()
-      } else {
-        console.log("not bought!!!");
-      }
+      });
+      this.calculateClickModifier();
     }
+  }
+
   calculateClickModifier(){
     let newModifier = 1;
     this.state.upgrades.forEach(function(upgrade){
       if (upgrade.active === true){
-        console.log(upgrade);              
-        newModifier = newModifier * upgrade.clickModifier
+        newModifier = newModifier * upgrade.clickModifier;
       }
     })
     this.setState({
       clickModifier: newModifier
-    })    
+    });
   }
   render() {
     return (

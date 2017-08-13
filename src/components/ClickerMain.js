@@ -13,7 +13,7 @@ class ClickerMain extends React.Component{
 		return(
       <div className="main-clicker-container">
         <div>
-        <img className="main-clicker-image" src={logo} onClick={this.clickHandler}/>
+        <img className="main-clicker-image" src={logo} onClick={this.clickHandler} alt="Main clicker"/>
         </div>
       </div>
 		)

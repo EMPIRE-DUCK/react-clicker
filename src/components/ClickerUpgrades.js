@@ -12,7 +12,7 @@ class ClickerUpgrades extends React.Component{
 	        <div className="four wide column">
 	          <div className="ui vertical fluid menu">
 	            <h2 className="item">Upgrades</h2>
-	            		{this.props.upgrades.map(function(upgrade){
+	            		{this.props.upgrades.map((upgrade) => {
 	            			if (upgrade.active === false){
 	            			return (
 							<div className="item" key={upgrade.id}>
@@ -22,8 +22,8 @@ class ClickerUpgrades extends React.Component{
 								<p>Price: {upgrade.price}</p>
 								<button onClick={() => this.buyUpgrade(upgrade.id)} >Buy</button>
 							</div>	            			
-	            		);}
-	            		}.bind(this))}
+	            		)}
+	            		})}
 
 	        	</div>
 	        </div>

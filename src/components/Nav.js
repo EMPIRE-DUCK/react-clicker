@@ -8,7 +8,7 @@ class Nav extends React.Component{
 		return(
       <nav className="ui top menu inverted">
         <div className="item">
-          <img className="ui navbar-logo" src={logo}/>
+          <img className="ui navbar-logo" src={logo} alt="logo of React Clicker"/>
         </div>
         <NavLink className="item" exact to="/">{this.props.name}</NavLink>
         <NavLink className="item" to="/options">Options</NavLink>
