@@ -17,7 +17,7 @@ class ClickerPage extends React.Component{
             <ClickerScoreDisplay score={this.props.score}/>
           </div>
         </div>
-        <ClickerBuildings/>        
+        <ClickerBuildings buildings={this.props.buildings}/>        
       </div>
 		)
 	}
