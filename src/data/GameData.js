@@ -3,7 +3,7 @@ const GameData = {
     {
       id: 0,
       name: "Click Reactor Upgrade",
-      clickModifier: 2,
+      clickModifier: 5,
       generationModifier: 1,
       price: 10,
       active: false
@@ -11,7 +11,7 @@ const GameData = {
     {
       id: 1,
       name: "Click Reactor Upgrade 2",
-      clickModifier: 2,
+      clickModifier: 5,
       generationModifier: 1,
       price: 50,
       active: false

@@ -22,11 +22,12 @@ class App extends Component {
       upgrades: GameData.upgrades,
       buildings: GameData.buildings,
       clickModifier: 1,
-      generatedScore: 0
+      totalGeneration: 0
     }
     this.handleUsernameInput = this.handleUsernameInput.bind(this);
     this.handleScoreChange = this.handleScoreChange.bind(this);    
-    this.handleUpgradePurchase = this.handleUpgradePurchase.bind(this);    
+    this.handleUpgradePurchase = this.handleUpgradePurchase.bind(this);
+    this.handleBuildingPurchase = this.handleBuildingPurchase.bind(this);            
     this.calculateClickModifier = this.calculateClickModifier.bind(this);    
   }
 
@@ -59,6 +60,21 @@ class App extends Component {
     }
   }
 
+  handleBuildingPurchase(id){
+    let tempBuildings = this.state.buildings;
+    if(this.state.score >= tempBuildings[id].price){
+      console.log("bought em");
+      const updatedScore = this.state.score - tempBuildings[id].price
+      tempBuildings[id].amount++;
+      tempBuildings[id].price = Math.ceil(tempBuildings[id].price * 1.1);      
+      this.setState({
+        buildings: tempBuildings,
+        score: updatedScore
+      });
+      this.initiateBuildingProduction();
+    }
+  }
+
   calculateClickModifier(){
     let newModifier = 1;
     this.state.upgrades.forEach(function(upgrade){
@@ -70,15 +86,28 @@ class App extends Component {
       clickModifier: newModifier
     });
   }
+  initiateBuildingProduction(){
+    let newProduction = 0;
+    this.state.buildings.forEach(function(building){
+      newProduction = newProduction + (building.generationPower * building.amount)
+    })
+    console.log(newProduction);
+  }
   render() {
-    console.log(GameData);
     return (
       <Router>         
         <div className="App">
           <Nav name={"React Clicker"}/>
             <Switch>
               <Route exact path="/" render={(props) => (
-              <ClickerPage username={this.state.username} passScoreChange={this.handleScoreChange} score={this.state.score} upgrades={this.state.upgrades} handleUpgradePurchase={this.handleUpgradePurchase} buildings={this.state.buildings}/>
+              <ClickerPage
+               username={this.state.username}
+               passScoreChange={this.handleScoreChange}
+               score={this.state.score}
+               upgrades={this.state.upgrades}
+               handleUpgradePurchase={this.handleUpgradePurchase}
+               buildings={this.state.buildings}
+               handleBuildingPurchase={this.handleBuildingPurchase}/>
                )}/>
               }
               <Route exact path="/about" component={About}/>

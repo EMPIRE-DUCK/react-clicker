@@ -13,6 +13,7 @@ class ClickerBuildings extends React.Component{
 		            			<p>Generates {building.generationPower} per second</p>
 		            			<p>You have {building.amount} {building.name}s</p>
 		            			<p>Buying one will cost {building.price}</p>
+								<button onClick={() => this.props.handleBuildingPurchase(building.id)} >Buy</button>		            			
 	            			</div>
 	            		)
 

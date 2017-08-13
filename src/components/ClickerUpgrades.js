@@ -1,12 +1,5 @@
 import React from 'react';
 class ClickerUpgrades extends React.Component{
-	constructor(props){
-		super(props);
-    this.buyUpgrade = this.buyUpgrade.bind(this);    		
-	}
-	buyUpgrade(id){
-		this.props.handleUpgradePurchase(id);
-	}
 	render(){
 		let limiter = 0;
 		return(
@@ -22,7 +15,7 @@ class ClickerUpgrades extends React.Component{
 								<p>Improves clicking by {upgrade.clickModifier}</p>
 								<p>Improves generators by {upgrade.generationModifier}</p>
 								<p>Price: {upgrade.price}</p>
-								<button onClick={() => this.buyUpgrade(upgrade.id)} >Buy</button>
+								<button onClick={() => this.props.handleUpgradePurchase(upgrade.id)} >Buy</button>
 							</div>	            			
 	            		)}
 	            		})}
