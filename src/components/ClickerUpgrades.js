@@ -8,12 +8,14 @@ class ClickerUpgrades extends React.Component{
 		this.props.handleUpgradePurchase(id);
 	}
 	render(){
+		let limiter = 0;
 		return(
 	        <div className="four wide column">
 	          <div className="ui vertical fluid menu">
 	            <h2 className="item">Upgrades</h2>
 	            		{this.props.upgrades.map((upgrade) => {
-	            			if (upgrade.active === false){
+	            			if (upgrade.active === false && limiter < 3){
+	            			limiter++;
 	            			return (
 							<div className="item" key={upgrade.id}>
 								<h3>{upgrade.name}</h3>

@@ -6,85 +6,23 @@ import About from './components/About';
 import ClickerPage from './components/ClickerPage';
 import Options from './components/Options';
 import Achievements from './components/Achievements';
+import GameData from './data/GameData';
 
 var ReactRouter = require('react-router-dom');
 var Router = ReactRouter.BrowserRouter;
 var Route = ReactRouter.Route;
 var Switch = ReactRouter.Switch;
-const upgrades = [
-  {
-    id: 0,
-    name: "Click Reactor Upgrade",
-    clickModifier: 2,
-    generationModifier: 1,
-    price: 10,
-    active: false
-  },
-  {
-    id: 1,
-    name: "Click Reactor Upgrade 2",
-    clickModifier: 2,
-    generationModifier: 1,
-    price: 50,
-    active: false
-  },
-  {
-    id: 2,
-    name: "Click Reactor Upgrade 3",
-    clickModifier: 3,
-    generationModifier: 1,
-    price: 500,
-    active: false
-  },
-  {
-    id: 3,
-    name: "Click Reactor Upgrade 4",
-    clickModifier: 5,
-    generationModifier: 1,
-    price: 5000,
-    active: false
-  }
-];
 
-const buildings = [
-  {
-    id: 0,
-    name: "Basic Reactor",
-    generationPower: 1,
-    price: 10,
-    amount: 0
-  },
-  {
-    id: 1,
-    name: "Advanced Reactor",
-    generationPower: 5,
-    price: 500,
-    amount: 0
-  },
-  {
-    id: 2,
-    name: "Redux Reactor",
-    generationPower: 25,
-    price: 1000,
-    amount: 0
-  },
-  {
-    id: 3,
-    name: "Advanced Redux Reactor",
-    generationPower: 50,
-    price: 5000,
-    amount: 0
-  }
-];
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
       username: "Clicking Master",
       score: 0,
-      upgrades: upgrades,
-      buildings: buildings,
-      clickModifier: 1
+      upgrades: GameData.upgrades,
+      buildings: GameData.buildings,
+      clickModifier: 1,
+      generatedScore: 0
     }
     this.handleUsernameInput = this.handleUsernameInput.bind(this);
     this.handleScoreChange = this.handleScoreChange.bind(this);    
@@ -133,6 +71,7 @@ class App extends Component {
     });
   }
   render() {
+    console.log(GameData);
     return (
       <Router>         
         <div className="App">
