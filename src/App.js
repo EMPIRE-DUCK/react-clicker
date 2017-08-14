@@ -28,7 +28,8 @@ class App extends Component {
     this.handleScoreChange = this.handleScoreChange.bind(this);    
     this.handleUpgradePurchase = this.handleUpgradePurchase.bind(this);
     this.handleBuildingPurchase = this.handleBuildingPurchase.bind(this);            
-    this.calculateClickModifier = this.calculateClickModifier.bind(this);    
+    this.calculateClickModifier = this.calculateClickModifier.bind(this);   
+    this.calculateBuildingProduction = this.calculateBuildingProduction.bind(this);     
   }
 
 
@@ -63,7 +64,6 @@ class App extends Component {
   handleBuildingPurchase(id){
     let tempBuildings = this.state.buildings;
     if(this.state.score >= tempBuildings[id].price){
-      console.log("bought em");
       const updatedScore = this.state.score - tempBuildings[id].price
       tempBuildings[id].amount++;
       tempBuildings[id].price = Math.ceil(tempBuildings[id].price * 1.1);      
@@ -90,8 +90,19 @@ class App extends Component {
     let newProduction = 0;
     this.state.buildings.forEach(function(building){
       newProduction = newProduction + (building.generationPower * building.amount)
-    })
-    console.log(newProduction);
+    });
+    this.setState({
+      totalGeneration: newProduction
+    });
+  }
+  calculateBuildingProduction(){
+    const newScore = this.state.score + this.state.totalGeneration;
+    this.setState({
+      score: newScore
+    });
+  }
+  componentDidMount() {
+    setInterval(this.calculateBuildingProduction, 2000);
   }
   render() {
     return (
